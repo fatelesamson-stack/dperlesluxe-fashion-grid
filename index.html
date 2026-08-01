@@ -27,7 +27,30 @@
     <!-- This is where we define all our colors, layouts, and designs -->
     <link rel="stylesheet" href="style.css" />
 </head>
-
+ <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        :root {
+            --primary: #8B3A2A;
+            --primary-light: #C67B5E;
+            --primary-dark: #5A241A;
+            --gold: #D4A849;
+            --gold-light: #F0D68A;
+            --cream: #FDF8F0;
+            --dark: #1E120E;
+            --text: #2D1B15;
+            --white: #FFFFFF;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --radius: 12px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+     </style>
 <body>
 
     <!-- ============================================
