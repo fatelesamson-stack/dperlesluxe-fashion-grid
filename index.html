@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ============================================
+    STEP 1: HEAD SECTION - Meta tags, title, styles
+    ============================================ -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Website Title (Shows in browser tab) -->
+    <title>D'perlesluxe Fashion Grid - Premium Agbada & Embroidery</title>
+    
+    <!-- ========== EXTERNAL STYLESHEETS ========== -->
+    <!-- Font Awesome: Gives us icons (shopping bag, user, etc.) -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    
+    <!-- Google Fonts: Beautiful fonts for our website -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    />
+    
+    <!-- ========== OUR CUSTOM STYLES ========== -->
+    <!-- This is where we define all our colors, layouts, and designs -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- ============================================
+    STEP 2: NAVIGATION BAR (Shows at top of every page)
+    ============================================ -->
+    <nav class="navbar">
+        <div class="nav-container">
+            
+            <!-- Business Logo -->
+            <div class="logo">
+                <h1>D'perlesluxe</h1>
+                <span>Fashion Grid</span>
+            </div>
+            
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#register">Register</a></li>
+                <li><a href="#signin">Sign In</a></li>
+            </ul>
+            
+            <!-- Shopping Cart Icon with Badge -->
+            <div class="nav-cart">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+            
+            <!-- Mobile Menu Button (Hamburger) -->
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+        </div>
+    </nav>
+
+    <!-- ============================================
+    STEP 3: HOME / HERO SECTION (First thing visitors see)
+    ============================================ -->
+    <section id="home" class="hero">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                
+                <!-- Brand Badge -->
+                <div class="hero-badge">Est. 2024</div>
+                
+                <!-- Main Headline -->
+                <h1>
+                    Where <span class="highlight">Tradition</span> Meets
+                    <span class="highlight">Luxury</span>
+                </h1>
+                
+                <!-- Description -->
+                <p>
+                    Premium Agbada designs, bespoke stitching, and intricate
+                    embroidery — crafted for the discerning gentleman.
+                </p>
+                
+                <!-- Call-to-Action Buttons -->
+                <div class="hero-buttons">
+                    <a href="#shop" class="btn-primary">
+                        <i class="fas fa-tshirt"></i> Explore Collection
+                    </a>
+                    <a href="#register" class="btn-secondary">
+                        <i class="fas fa-user-plus"></i> Join Us
+                    </a>
+                </div>
+                
+                <!-- Business Statistics -->
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Designs</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">120+</span>
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">4.9★</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+    STEP 4: SHOP SECTION (Products display)
+    ============================================ -->
+    <section id="shop" class="shop">
+        <div class="container">
+            
+            <!-- Section Title -->
+            <div class="section-header">
+                <h2>Our <span class="highlight">Agbada</span> Collection</h2>
+                <p>Luxurious fabrics, flawless stitching, timeless elegance</p>
+            </div>
+
+            <!-- Filter Buttons (Category selection) -->
+            <div class="shop-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="classic">Classic</button>
+                <button class="filter-btn" data-filter="modern">Modern</button>
+                <button class="filter-btn" data-filter="embroidery">Embroidery</button>
+            </div>
+
+            <!-- Product Grid (Products inserted by JavaScript) -->
+            <div class="product-grid" id="productGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+
+            <!-- ===== ORDER SUMMARY / CART ===== -->
+            <div class="order-summary" id="orderSummary">
+                <h3><i class="fas fa-shopping-bag"></i> Your Orders</h3>
+                <div id="cartItems">
+                    <p class="empty-cart">Your cart is empty.</p>
+                </div>
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">₦0</span>
+                </div>
+                <button class="btn-primary" id="placeOrderBtn">
+                    <i class="fas fa-check-circle"></i> Place Order
+                </button>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- ============================================
+    STEP 5: REGISTRATION SECTION (Customer sign up)
+    ============================================ -->
+    <section id="register" class="register">
+        <div class="container">
+            
+            <!-- Section Title -->
+            <div class="section-header">
+                <h2>Create an <span class="highlight">Account</span></h2>
+                <p>Join the D'perlesluxe family and enjoy exclusive offers</p>
+            </div>
+            
+            <!-- Registration Form -->
+            <div class="form-container">
+                <form id="registerForm">
+                    
+                    <!-- Full Name -->
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Full Name</label>
+                        <input
+                            type="text"
+                            id="regName"
+                            placeholder="e.g. Adekunle Ogunlesi"
+                            required
+                        />
+                    </div>
+                    
+                    <!-- Email Address -->
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Email Address</label>
+                        <input
+                            type="email"
+                            id="regEmail"
+                            placeholder="you@example.com"
+                            required
+                        />
+                    </div>
+                    
+                    <!-- Phone Number -->
+                    <div class="form-group">
+                        <label><i class="fas fa-phone"></i> Phone Number</label>
+                        <input
+                            type="tel"
+                            id="regPhone"
+                            placeholder="e.g. 08012345678"
+                            required
+                        />
+                    </div>
+                    
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label><i class="fas fa-lock"></i> Password</label>
+                        <input
+                            type="password"
+                            id="regPassword"
+                            placeholder="Min 6 characters"
+                            required
+                            minlength="6"
+                        />
+                    </div>
+                    
+                    <!-- Location -->
+                    <div class="form-group">
+                        <label><i class="fas fa-map-marker-alt"></i> Location</label>
+                        <input
+                            type="text"
+                            id="regLocation"
+                            placeholder="e.g. F01 Market, Abuja"
+                            value="F01 Market, Abuja"
+                        />
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn-primary btn-full">
+                        <i class="fas fa-user-plus"></i> Register
+                    </button>
+                    
+                    <!-- Link to Sign In -->
+                    <p class="form-footer">
+                        Already have an account?
+                        <a href="#signin" class="form-link">Sign In</a>
+                    </p>
+                    
+                </form>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- ============================================
+    STEP 6: SIGN IN SECTION (Existing customers)
+    ============================================ -->
+    <section id="signin" class="signin">
+        <div class="container">
+            
+            <!-- Section Title -->
+            <div class="section-header">
+                <h2>Welcome <span class="highlight">Back</span></h2>
+                <p>Sign in to access your orders and profile</p>
+            </div>
+            
+            <!-- Sign In Form -->
+            <div class="form-container">
+                <form id="signinForm">
+                    
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Email Address</label>
+                        <input
+                            type="email"
+                            id="signinEmail"
+                            placeholder="you@example.com"
+                            required
+                        />
+                    </div>
+                    
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label><i class="fas fa-lock"></i> Password</label>
+                        <input
+                            type="password"
+                            id="signinPassword"
+                            placeholder="Enter your password"
+                            required
+                        />
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn-primary btn-full">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </button>
+                    
+                    <!-- Link to Register -->
+                    <p class="form-footer">
+                        Don't have an account?
+                        <a href="#register" class="form-link">Register</a>
+                    </p>
+                    
+                </form>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- ============================================
+    STEP 7: FOOTER (Bottom of every page)
+    ============================================ -->
+    <footer class="footer">
+        <div class="container">
+            
+            <div class="footer-grid">
+                
+                <!-- Business Information -->
+                <div class="footer-brand">
+                    <h3>D'perlesluxe</h3>
+                    <p>F01 Market, Abuja, Nigeria</p>
+                    <p><i class="fas fa-phone"></i> +234 80 1234 5678</p>
+                    <p><i class="fas fa-envelope"></i> info@dperlesluxe.com</p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#shop">Shop</a>
+                    <a href="#register">Register</a>
+                    <a href="#signin">Sign In</a>
+                </div>
+                
+                <!-- Social Media -->
+                <div class="footer-social">
+                    <h4>Connect With Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 D'perlesluxe Fashion Grid. All rights reserved.</p>
+            </div>
+            
+        </div>
+    </footer>
+
+    <!-- ============================================
+    STEP 8: JAVASCRIPT (Makes everything work)
+    ============================================ -->
+    <script src="script.js"></script>
+
+</body>
+</html>
