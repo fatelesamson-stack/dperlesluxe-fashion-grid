@@ -75,7 +75,7 @@ const products = [
 // ============================================================
 // 🔴 REPLACE WITH YOUR WHATSAPP NUMBER (Country code + number, no + sign)
 // Example: 2348138586051 for Nigeria
-const WHATSAPP_NUMBER = '2349153328922';
+const WHATSAPP_NUMBER = '09153328922';
 
 // ============================================================
 // STATE
@@ -406,7 +406,7 @@ function updateNavForUser() {
 // ============================================================
 function addWhatsAppFloatButton() {
     const floatBtn = document.createElement('a');
-    floatBtn.href = `https://wa.me/${WHATSAPP_NUMBER}`;
+    floatBtn.href = `https://wa.me/${09153328922}`;
     floatBtn.target = '_blank';
     floatBtn.className = 'whatsapp-float';
     floatBtn.innerHTML = '<i class="fab fa-whatsapp"></i>';
