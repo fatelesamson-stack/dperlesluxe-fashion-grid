@@ -1,7 +1,6 @@
 /* ============================================
-   STEP 1: RESET & BASE STYLES
+   RESET & BASE
    ============================================ */
-/* Remove default browser margins/paddings */
 * {
     margin: 0;
     padding: 0;
@@ -9,27 +8,21 @@
     scroll-behavior: smooth;
 }
 
-/* ============================================
-   STEP 2: BRAND COLORS (THEME)
-   ============================================ */
 :root {
-    --primary: #8B3A2A;        /* Dark brown - main color */
-    --primary-light: #C67B5E;   /* Light brown */
-    --primary-dark: #5A241A;    /* Very dark brown */
-    --gold: #D4A849;           /* Gold - accent color */
-    --gold-light: #F0D68A;     /* Light gold */
-    --cream: #FDF8F0;          /* Cream - background */
-    --dark: #1E120E;           /* Dark - text */
-    --text: #2D1B15;           /* Text color */
-    --white: #FFFFFF;          /* White */
-    --shadow: 0 8px 32px rgba(0, 0, 0, 0.12);  /* Shadow effect */
-    --radius: 12px;            /* Rounded corners */
-    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);  /* Smooth animations */
+    --primary: #8B3A2A;
+    --primary-light: #C67B5E;
+    --primary-dark: #5A241A;
+    --gold: #D4A849;
+    --gold-light: #F0D68A;
+    --cream: #FDF8F0;
+    --dark: #1E120E;
+    --text: #2D1B15;
+    --white: #FFFFFF;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --radius: 12px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ============================================
-   STEP 3: BODY STYLES
-   ============================================ */
 body {
     font-family: 'Inter', sans-serif;
     background: var(--cream);
@@ -38,28 +31,24 @@ body {
     overflow-x: hidden;
 }
 
-/* Headings use Playfair Display (elegant font) */
 h1, h2, h3, h4 {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
 }
 
-/* Container - centers content and limits width */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
 }
 
-/* Gold highlight for important text */
 .highlight {
     color: var(--gold);
 }
 
 /* ============================================
-   STEP 4: BUTTONS
+   BUTTONS
    ============================================ */
-/* Primary Button (Gold/brown) */
 .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -83,7 +72,6 @@ h1, h2, h3, h4 {
     box-shadow: 0 8px 25px rgba(139, 58, 42, 0.4);
 }
 
-/* Secondary Button (Outline) */
 .btn-secondary {
     display: inline-flex;
     align-items: center;
@@ -106,27 +94,25 @@ h1, h2, h3, h4 {
     transform: translateY(-2px);
 }
 
-/* Full width button */
 .btn-full {
     width: 100%;
     justify-content: center;
 }
 
-/* Small button for products */
 .btn-small {
     padding: 8px 20px;
     font-size: 0.85rem;
 }
 
 /* ============================================
-   STEP 5: NAVIGATION
+   NAVIGATION
    ============================================ */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(30, 18, 14, 0.92);
+    background: rgba(30, 18, 14, 0.95);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(212, 168, 73, 0.2);
     padding: 12px 0;
@@ -173,7 +159,6 @@ h1, h2, h3, h4 {
     position: relative;
 }
 
-/* Underline animation on hover */
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -195,7 +180,32 @@ h1, h2, h3, h4 {
     color: var(--gold);
 }
 
-/* Shopping Cart Icon */
+.user-greeting {
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user-greeting .signout-btn {
+    background: rgba(179, 60, 60, 0.2);
+    color: #ff6b6b;
+    border: 1px solid rgba(179, 60, 60, 0.3);
+    padding: 4px 12px;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.user-greeting .signout-btn:hover {
+    background: rgba(179, 60, 60, 0.4);
+    transform: scale(1.05);
+}
+
 .nav-cart {
     position: relative;
     color: var(--cream);
@@ -224,7 +234,6 @@ h1, h2, h3, h4 {
     justify-content: center;
 }
 
-/* Hamburger menu (mobile) */
 .hamburger {
     display: none;
     color: var(--cream);
@@ -233,23 +242,82 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================
-   STEP 6: HERO / HOME SECTION
+   HERO SECTION - PROFESSIONAL BACKGROUND
    ============================================ */
 .hero {
     min-height: 100vh;
-    background: linear-gradient(135deg, var(--dark) 0%, var(--primary-dark) 100%);
-    /* Decorative pattern overlay */
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path d="M20 20 L80 20 L80 80 L20 80 Z" fill="none" stroke="%23d4a849" stroke-width="0.5"/><path d="M30 30 L70 30 L70 70 L30 70 Z" fill="none" stroke="%23d4a849" stroke-width="0.5"/><circle cx="50" cy="50" r="15" fill="none" stroke="%23d4a849" stroke-width="0.5"/></svg>');
-    background-size: 200px 200px;
     display: flex;
     align-items: center;
     padding-top: 80px;
     position: relative;
+    background: 
+        /* Dark overlay for readability */
+        linear-gradient(135deg, rgba(30, 18, 14, 0.92) 0%, rgba(90, 36, 26, 0.88) 100%),
+        /* African textile pattern overlay */
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 40px,
+            rgba(212, 168, 73, 0.03) 40px,
+            rgba(212, 168, 73, 0.03) 41px
+        ),
+        /* Geometric pattern */
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 60px,
+            rgba(212, 168, 73, 0.02) 60px,
+            rgba(212, 168, 73, 0.02) 61px
+        ),
+        /* Main background gradient */
+        linear-gradient(135deg, #1a0a08 0%, #3d1a12 30%, #5a241a 60%, #3d1a12 100%);
+}
+
+/* Animated background elements */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(212, 168, 73, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(212, 168, 73, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(212, 168, 73, 0.06) 0%, transparent 40%);
+    animation: heroGlow 8s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes heroGlow {
+    0% { opacity: 0.5; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.05); }
+}
+
+/* Decorative gold pattern overlay */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        /* Traditional African pattern inspired */
+        radial-gradient(circle at 30% 40%, rgba(212, 168, 73, 0.03) 0%, transparent 30%),
+        radial-gradient(circle at 70% 60%, rgba(212, 168, 73, 0.02) 0%, transparent 25%),
+        /* Dotted pattern */
+        radial-gradient(circle at 10% 20%, rgba(212, 168, 73, 0.04) 2px, transparent 2px),
+        radial-gradient(circle at 90% 80%, rgba(212, 168, 73, 0.03) 2px, transparent 2px);
+    background-size: 100% 100%, 100% 100%, 40px 40px, 60px 60px;
+    pointer-events: none;
 }
 
 .hero-overlay {
     width: 100%;
     padding: 60px 24px;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content {
@@ -261,20 +329,24 @@ h1, h2, h3, h4 {
 
 .hero-badge {
     display: inline-block;
-    padding: 6px 20px;
+    padding: 8px 24px;
     border: 1px solid var(--gold);
     border-radius: 50px;
     font-size: 0.8rem;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     color: var(--gold);
     margin-bottom: 24px;
     text-transform: uppercase;
+    background: rgba(212, 168, 73, 0.08);
+    backdrop-filter: blur(4px);
 }
 
 .hero h1 {
     font-size: clamp(2.5rem, 6vw, 4.5rem);
     line-height: 1.1;
     margin-bottom: 20px;
+    color: var(--white);
+    text-shadow: 0 2px 30px rgba(0, 0, 0, 0.3);
 }
 
 .hero h1 .highlight {
@@ -282,7 +354,6 @@ h1, h2, h3, h4 {
     position: relative;
 }
 
-/* Underline effect on highlight */
 .hero h1 .highlight::after {
     content: '';
     position: absolute;
@@ -297,10 +368,11 @@ h1, h2, h3, h4 {
 
 .hero p {
     font-size: 1.15rem;
-    color: #1a2a6c;  /* Dark Blue */
+    color: rgba(255, 255, 255, 0.9);
     max-width: 600px;
     margin: 0 auto 32px;
     font-weight: 300;
+    text-shadow: 0 1px 20px rgba(0, 0, 0, 0.2);
 }
 
 .hero-buttons {
@@ -315,6 +387,8 @@ h1, h2, h3, h4 {
     justify-content: center;
     gap: 60px;
     margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(212, 168, 73, 0.15);
 }
 
 .stat {
@@ -336,7 +410,7 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================
-   STEP 7: SECTION HEADERS
+   SECTION HEADERS
    ============================================ */
 .section-header {
     text-align: center;
@@ -354,13 +428,12 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================
-   STEP 8: SHOP / PRODUCTS
+   SHOP SECTION
    ============================================ */
 .shop {
     padding: 0 0 80px;
 }
 
-/* Filter buttons */
 .shop-filters {
     display: flex;
     gap: 12px;
@@ -387,7 +460,6 @@ h1, h2, h3, h4 {
     color: var(--white);
 }
 
-/* Product grid - responsive cards */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -395,7 +467,6 @@ h1, h2, h3, h4 {
     margin-bottom: 60px;
 }
 
-/* Individual product card */
 .product-card {
     background: var(--white);
     border-radius: var(--radius);
@@ -468,7 +539,6 @@ h1, h2, h3, h4 {
     margin-left: 8px;
 }
 
-/* Size selection buttons */
 .size-select {
     display: flex;
     gap: 8px;
@@ -507,7 +577,7 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================
-   STEP 9: ORDER SUMMARY / CART
+   ORDER SUMMARY
    ============================================ */
 .order-summary {
     background: var(--white);
@@ -566,7 +636,7 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================
-   STEP 10: REGISTER & SIGN IN FORMS
+   FORMS
    ============================================ */
 .register,
 .signin {
@@ -636,7 +706,7 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================
-   STEP 11: FOOTER
+   FOOTER
    ============================================ */
 .footer {
     background: var(--dark);
@@ -722,7 +792,7 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================
-   STEP 12: TOAST NOTIFICATION (Pop-up messages)
+   TOAST NOTIFICATION
    ============================================ */
 .toast {
     position: fixed;
@@ -758,13 +828,43 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================
-   STEP 13: RESPONSIVE DESIGN (Mobile/Tablet)
+   FLOATING WHATSAPP BUTTON
    ============================================ */
+.whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    background: #25D366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    z-index: 999;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    animation: pulse 2s infinite;
+}
 
-/* Tablets and smaller laptops */
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
 @media (max-width: 768px) {
-    
-    /* Mobile navigation */
     .nav-links {
         position: fixed;
         top: 0;
@@ -778,6 +878,7 @@ h1, h2, h3, h4 {
         transition: var(--transition);
         gap: 20px;
         border-left: 2px solid rgba(212, 168, 73, 0.2);
+        overflow-y: auto;
     }
 
     .nav-links.open {
@@ -788,9 +889,9 @@ h1, h2, h3, h4 {
         display: block;
     }
 
-    /* Hero adjustments */
     .hero-stats {
         gap: 30px;
+        flex-wrap: wrap;
     }
 
     .hero h1 {
@@ -807,7 +908,6 @@ h1, h2, h3, h4 {
         justify-content: center;
     }
 
-    /* Products - 2 columns on tablet */
     .product-grid {
         grid-template-columns: 1fr 1fr;
         gap: 16px;
@@ -821,12 +921,23 @@ h1, h2, h3, h4 {
         grid-template-columns: 1fr;
         gap: 24px;
     }
+
+    .user-greeting {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        bottom: 16px;
+        left: 16px;
+    }
 }
 
-/* Mobile phones */
 @media (max-width: 480px) {
-    
-    /* Products - 1 column on mobile */
     .product-grid {
         grid-template-columns: 1fr;
     }
@@ -838,5 +949,9 @@ h1, h2, h3, h4 {
 
     .order-summary {
         padding: 20px;
+    }
+
+    .hero p {
+        font-size: 1rem;
     }
 }
