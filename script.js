@@ -12,8 +12,7 @@ const products = [
         badge: 'Best Seller', 
         inStock: true, 
         description: 'Premium hand-stitched royal agbada with intricate embroidery',
-        // 👇 REPLACE WITH YOUR ACTUAL IMAGE URL
-        image: 'https://ibb.co/fdgHwT2k'  
+        image: 'https://i.ibb.co/yBBmqRcx/BELIEVE-AGBADA-TRAINING.jpg'  
     },
     { 
         id: 2, 
@@ -25,7 +24,7 @@ const products = [
         badge: null, 
         inStock: true, 
         description: 'Contemporary design with clean modern lines',
-        image: 'https://ibb.co/zhgPBVTh'
+        image: 'https://i.ibb.co/7dFxYnqy/12.jpg'
     },
     { 
         id: 3, 
@@ -37,7 +36,7 @@ const products = [
         badge: 'Premium', 
         inStock: true, 
         description: 'Luxurious embroidery work with gold thread accents',
-        image: 'https://ibb.co/q3wLyNv1'
+        image: 'https://i.ibb.co/TBGP7MxB/Flap-and-PKT-facebook-2.jpg'
     },
     { 
         id: 4, 
@@ -49,7 +48,7 @@ const products = [
         badge: null, 
         inStock: true, 
         description: 'Timeless kaftan style with elegant draping',
-        image: 'https://ibb.co/prr6dPBk'
+        image: 'https://i.ibb.co/QFg9whCf/Flap-and-pocket-1.jpg'
     },
     { 
         id: 5, 
@@ -61,7 +60,7 @@ const products = [
         badge: 'Limited', 
         inStock: true, 
         description: 'Unique floral embroidery pattern - limited collection',
-        image: 'https://ibb.co/Dfs5SSm3'
+        image: 'https://i.ibb.co/39m5vMH5/youtube.jpg'
     },
     { 
         id: 6, 
@@ -73,7 +72,7 @@ const products = [
         badge: null, 
         inStock: true, 
         description: 'Rich navy blue fabric with subtle modern stitching',
-        image: 'https://ibb.co/VWsYKwt3'
+        image: 'https://i.ibb.co/m516MMdQ/Flap-PK-Facebook.jpg'
     }
 ];
 
@@ -124,7 +123,133 @@ function showToast(message, type = 'info') {
 }
 
 // ============================================================
-// RENDER PRODUCTS - FIXED IMAGE DISPLAY!
+// IMAGE PREVIEW / LIGHTBOX (NEW!)
+// ============================================================
+function openImagePreview(imageUrl, productName) {
+    // Check if lightbox already exists
+    const existingLightbox = document.querySelector('.image-lightbox');
+    if (existingLightbox) {
+        existingLightbox.remove();
+        return;
+    }
+
+    // Create lightbox overlay
+    const lightbox = document.createElement('div');
+    lightbox.className = 'image-lightbox';
+    lightbox.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        animation: fadeIn 0.3s ease;
+        padding: 20px;
+    `;
+
+    // Create close button
+    const closeBtn = document.createElement('button');
+    closeBtn.style.cssText = `
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 2.5rem;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        z-index: 10001;
+    `;
+    closeBtn.innerHTML = '✕';
+    closeBtn.onmouseover = () => closeBtn.style.transform = 'scale(1.2)';
+    closeBtn.onmouseout = () => closeBtn.style.transform = 'scale(1)';
+    closeBtn.onclick = (e) => {
+        e.stopPropagation();
+        lightbox.remove();
+    };
+
+    // Create image container
+    const imgContainer = document.createElement('div');
+    imgContainer.style.cssText = `
+        max-width: 90%;
+        max-height: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    `;
+
+    // Create the image
+    const img = document.createElement('img');
+    img.src = imageUrl;
+    img.alt = productName || 'Product Image';
+    img.style.cssText = `
+        max-width: 100%;
+        max-height: 85vh;
+        border-radius: 12px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        object-fit: contain;
+    `;
+
+    // Create product name caption
+    const caption = document.createElement('p');
+    caption.textContent = productName || 'Product Image';
+    caption.style.cssText = `
+        color: white;
+        font-size: 1.2rem;
+        margin-top: 16px;
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        text-align: center;
+    `;
+
+    // Add hint to close
+    const hint = document.createElement('p');
+    hint.textContent = 'Click anywhere to close';
+    hint.style.cssText = `
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.8rem;
+        margin-top: 8px;
+        font-family: 'Inter', sans-serif;
+        transition: opacity 0.3s ease;
+    `;
+
+    imgContainer.appendChild(img);
+    imgContainer.appendChild(caption);
+    imgContainer.appendChild(hint);
+    lightbox.appendChild(closeBtn);
+    lightbox.appendChild(imgContainer);
+
+    // Close on click outside image
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.remove();
+        }
+    });
+
+    // Close with Escape key
+    document.addEventListener('keydown', function escapeHandler(e) {
+        if (e.key === 'Escape') {
+            const lb = document.querySelector('.image-lightbox');
+            if (lb) {
+                lb.remove();
+                document.removeEventListener('keydown', escapeHandler);
+            }
+        }
+    });
+
+    document.body.appendChild(lightbox);
+}
+
+// ============================================================
+// RENDER PRODUCTS - WITH IMAGE CLICK PREVIEW!
 // ============================================================
 function renderProducts(filter = 'all') {
     const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
@@ -147,17 +272,28 @@ function renderProducts(filter = 'all') {
         const badgeHTML = product.badge ? `<span class="badge">${product.badge}</span>` : '';
         const originalPriceHTML = product.originalPrice ? `<span>₦${product.originalPrice.toLocaleString()}</span>` : '';
 
-        // 🔴 FIXED: Proper image display with fallback
+        // Image display with click handler
         let imageHTML = '';
         if (product.image && product.image !== '') {
-            imageHTML = `<img src="${product.image}" alt="${product.name}" style="width:100%;height:100%;object-fit:cover;">`;
+            imageHTML = `
+                <img 
+                    src="${product.image}" 
+                    alt="${product.name}" 
+                    style="width:100%;height:100%;object-fit:cover;cursor:pointer;"
+                    onclick="openImagePreview('${product.image}', '${product.name}')"
+                    title="Click to enlarge"
+                >
+                <div style="position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,0.6);color:white;padding:4px 12px;border-radius:20px;font-size:0.7rem;pointer-events:none;">
+                    <i class="fas fa-expand"></i> Click to zoom
+                </div>
+            `;
         } else {
             imageHTML = `<i class="fas fa-tshirt" style="font-size:4rem;opacity:0.5;"></i>`;
         }
 
         return `
             <div class="product-card" data-id="${product.id}">
-                <div class="product-image" style="position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--primary-light), var(--primary));">
+                <div class="product-image" style="position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--primary-light), var(--primary));cursor:pointer;">
                     ${imageHTML}
                     ${badgeHTML}
                 </div>
@@ -468,6 +604,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// ============================================================
+// ADD CSS FOR LIGHTBOX ANIMATION
+// ============================================================
+const styleSheet = document.createElement('style');
+styleSheet.textContent = `
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+    }
+`;
+document.head.appendChild(styleSheet);
 
 // ============================================================
 // INITIALIZE
