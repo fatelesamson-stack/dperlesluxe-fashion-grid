@@ -297,7 +297,7 @@ h1, h2, h3, h4 {
 
 .hero p {
     font-size: 1.15rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: #1a2a6c;  /* Dark Blue */
     max-width: 600px;
     margin: 0 auto 32px;
     font-weight: 300;
