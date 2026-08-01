@@ -75,7 +75,7 @@ const products = [
 // ============================================================
 // 🔴 REPLACE WITH YOUR WHATSAPP NUMBER (Country code + number, no + sign)
 // Example: 2348138586051 for Nigeria
-const WHATSAPP_NUMBER = '09153328922';
+const WHATSAPP_NUMBER = '2349153328922';
 
 // ============================================================
 // STATE
@@ -287,7 +287,7 @@ ${orderItems}
 Thank you for your order! 🙏`;
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+    const whatsappURL = `https://wa.me/${2349153328922}?text=${encodedMessage}`;
 
     window.open(whatsappURL, '_blank');
 
@@ -406,7 +406,7 @@ function updateNavForUser() {
 // ============================================================
 function addWhatsAppFloatButton() {
     const floatBtn = document.createElement('a');
-    floatBtn.href = `https://wa.me/${09153328922}`;
+    floatBtn.href = `https://wa.me/${2349153328922}`;
     floatBtn.target = '_blank';
     floatBtn.className = 'whatsapp-float';
     floatBtn.innerHTML = '<i class="fab fa-whatsapp"></i>';
