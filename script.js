@@ -1,5 +1,5 @@
 // ============================================================
-// PRODUCT DATABASE - Add your products here
+// PRODUCT DATABASE - Add your products with IMAGES here!
 // ============================================================
 const products = [
     { 
@@ -11,7 +11,9 @@ const products = [
         sizes: ['S','M','L','XL','XXL'], 
         badge: 'Best Seller', 
         inStock: true, 
-        description: 'Premium hand-stitched royal agbada with intricate embroidery' 
+        description: 'Premium hand-stitched royal agbada with intricate embroidery',
+        // 👇 REPLACE WITH YOUR ACTUAL IMAGE URL
+        image: 'https://ibb.co/fdgHwT2k'  
     },
     { 
         id: 2, 
@@ -22,7 +24,8 @@ const products = [
         sizes: ['M','L','XL'], 
         badge: null, 
         inStock: true, 
-        description: 'Contemporary design with clean modern lines' 
+        description: 'Contemporary design with clean modern lines',
+        image: 'https://ibb.co/zhgPBVTh'
     },
     { 
         id: 3, 
@@ -33,7 +36,8 @@ const products = [
         sizes: ['L','XL','XXL'], 
         badge: 'Premium', 
         inStock: true, 
-        description: 'Luxurious embroidery work with gold thread accents' 
+        description: 'Luxurious embroidery work with gold thread accents',
+        image: 'https://ibb.co/q3wLyNv1'
     },
     { 
         id: 4, 
@@ -44,7 +48,8 @@ const products = [
         sizes: ['S','M','L','XL'], 
         badge: null, 
         inStock: true, 
-        description: 'Timeless kaftan style with elegant draping' 
+        description: 'Timeless kaftan style with elegant draping',
+        image: 'https://ibb.co/prr6dPBk'
     },
     { 
         id: 5, 
@@ -55,7 +60,8 @@ const products = [
         sizes: ['M','L','XL','XXL'], 
         badge: 'Limited', 
         inStock: true, 
-        description: 'Unique floral embroidery pattern - limited collection' 
+        description: 'Unique floral embroidery pattern - limited collection',
+        image: 'https://ibb.co/Dfs5SSm3'
     },
     { 
         id: 6, 
@@ -66,19 +72,18 @@ const products = [
         sizes: ['S','M','L','XL'], 
         badge: null, 
         inStock: true, 
-        description: 'Rich navy blue fabric with subtle modern stitching' 
+        description: 'Rich navy blue fabric with subtle modern stitching',
+        image: 'https://ibb.co/VWsYKwt3'
     }
 ];
 
 // ============================================================
 // WHATSAPP CONFIGURATION
 // ============================================================
-// 🔴 REPLACE WITH YOUR WHATSAPP NUMBER (Country code + number, no + sign)
-// Example: 2348138586051 for Nigeria
-const WHATSAPP_NUMBER = '2349153328922';
+const WHATSAPP_NUMBER = '2348138586051';
 
 // ============================================================
-// STATE
+// STATE MANAGEMENT
 // ============================================================
 let cart = [];
 let currentFilter = 'all';
@@ -86,7 +91,7 @@ let registeredUsers = JSON.parse(localStorage.getItem('dperlesluxe_users')) || [
 let currentUser = JSON.parse(localStorage.getItem('dperlesluxe_current_user')) || null;
 
 // ============================================================
-// DOM REFS
+// DOM REFERENCES
 // ============================================================
 const productGrid = document.getElementById('productGrid');
 const cartItems = document.getElementById('cartItems');
@@ -119,7 +124,7 @@ function showToast(message, type = 'info') {
 }
 
 // ============================================================
-// RENDER PRODUCTS
+// RENDER PRODUCTS - FIXED IMAGE DISPLAY!
 // ============================================================
 function renderProducts(filter = 'all') {
     const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
@@ -142,10 +147,18 @@ function renderProducts(filter = 'all') {
         const badgeHTML = product.badge ? `<span class="badge">${product.badge}</span>` : '';
         const originalPriceHTML = product.originalPrice ? `<span>₦${product.originalPrice.toLocaleString()}</span>` : '';
 
+        // 🔴 FIXED: Proper image display with fallback
+        let imageHTML = '';
+        if (product.image && product.image !== '') {
+            imageHTML = `<img src="${product.image}" alt="${product.name}" style="width:100%;height:100%;object-fit:cover;">`;
+        } else {
+            imageHTML = `<i class="fas fa-tshirt" style="font-size:4rem;opacity:0.5;"></i>`;
+        }
+
         return `
             <div class="product-card" data-id="${product.id}">
-                <div class="product-image" style="background:linear-gradient(135deg, var(--primary-light), var(--primary));">
-                    <i class="fas fa-tshirt" style="font-size:4rem;opacity:0.5;"></i>
+                <div class="product-image" style="position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--primary-light), var(--primary));">
+                    ${imageHTML}
                     ${badgeHTML}
                 </div>
                 <div class="product-body">
@@ -168,6 +181,7 @@ function renderProducts(filter = 'all') {
         `;
     }).join('');
 
+    // Size selection event listeners
     document.querySelectorAll('.size-option').forEach(btn => {
         btn.addEventListener('click', function() {
             const parent = this.closest('.size-select');
@@ -176,6 +190,7 @@ function renderProducts(filter = 'all') {
         });
     });
 
+    // Add to cart event listeners
     document.querySelectorAll('.add-to-cart').forEach(btn => {
         btn.addEventListener('click', function() {
             const card = this.closest('.product-card');
@@ -287,7 +302,7 @@ ${orderItems}
 Thank you for your order! 🙏`;
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappURL = `https://wa.me/${2349153328922}?text=${encodedMessage}`;
+    const whatsappURL = `https://wa.me/${2348138586051}?text=${encodedMessage}`;
 
     window.open(whatsappURL, '_blank');
 
@@ -406,7 +421,7 @@ function updateNavForUser() {
 // ============================================================
 function addWhatsAppFloatButton() {
     const floatBtn = document.createElement('a');
-    floatBtn.href = `https://wa.me/${2349153328922}`;
+    floatBtn.href = `https://wa.me/${2348138586051}`;
     floatBtn.target = '_blank';
     floatBtn.className = 'whatsapp-float';
     floatBtn.innerHTML = '<i class="fab fa-whatsapp"></i>';
@@ -455,7 +470,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ============================================================
-// INIT
+// INITIALIZE
 // ============================================================
 renderProducts('all');
 updateCart();
@@ -469,4 +484,4 @@ if (currentUser) {
 console.log('🚀 D\'perlesluxe Fashion Grid is ready!');
 console.log(`📦 ${products.length} products loaded`);
 console.log(`👥 ${registeredUsers.length} registered users`);
-console.log(`📱 WhatsApp: ${WHATSAPP_NUMBER}`);
+console.log(`📱 WhatsApp: ${2348138586051}`);
