@@ -441,7 +441,7 @@ async function placeOrder() {
         // Show success message
         const serviceMsg = result.success 
             ? `✅ Order sent via ${result.service}! We'll contact you shortly.` 
-            : `✅ Order saved locally! Please contact us directly to confirm your order.\n\nContact: 080 1234 5678`;
+            : `✅ Order saved locally! Please contact us directly to confirm your order.\n\nContact: 081 3858 6051`;
 
         alert(
             `🛍️ ORDER PLACED SUCCESSFULLY!\n\n` +
